@@ -50,7 +50,7 @@ public class TutorialMod {
 
     @SubscribeEvent
     public void onServerStarting(ServerStartingEvent event) {
-
+LOGGER .info ("hola, este mod funciona") ;
     }
 
     
