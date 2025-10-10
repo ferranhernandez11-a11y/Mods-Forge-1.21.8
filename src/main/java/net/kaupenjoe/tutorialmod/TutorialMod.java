@@ -14,6 +14,8 @@ import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import org.slf4j.Logger;
+import net.minecraftforge.event.level.BlockEvent ;
+import net.minecraft.network.chat.Component ;
 
 // Very important Comment
 // The value here should match an entry in the META-INF/mods.toml file
@@ -53,7 +55,15 @@ public class TutorialMod {
 LOGGER .info ("hola, este mod funciona") ;
     }
 
-    
+@SubscribeEvent
+public void onBlockBreak(net.minecraftforge.event.level.BlockEvent.BreakEvent event) {
+var jugador=event.getPlayer() ;    
+var bloque=event.getState().getBlock().getName().getString(); 
+jugador.sendSystemMessage(
+        net.minecraft.network.chat.Component.literal("Rompiste: " +bloque)
+    );
+}
+ 
 
     
     @Mod.EventBusSubscriber(modid = MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
