@@ -14,8 +14,9 @@ import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import org.slf4j.Logger;
-import net.minecraftforge.event.level.BlockEvent ;
-import net.minecraft.network.chat.Component ;
+import net.minecraftforge.event.level.BlockEvent;
+import net.minecraft.network.chat.Component;
+import net.minecraft.world.level.block.Blocks;
 
 // Very important Comment
 // The value here should match an entry in the META-INF/mods.toml file
@@ -59,7 +60,7 @@ LOGGER .info ("hola, este mod funciona") ;
 public void onBlockBreak(net.minecraftforge.event.level.BlockEvent.BreakEvent event) {
 var jugador=event.getPlayer() ;    
 var bloque=event.getState().getBlock().getName().getString(); 
-if (bloque=="Césped"){
+if (event.getState().getBlock()==Blocks.DIRT){
   jugador.sendSystemMessage(
         net.minecraft.network.chat.Component.literal("Rompiste: " +bloque)
     );
