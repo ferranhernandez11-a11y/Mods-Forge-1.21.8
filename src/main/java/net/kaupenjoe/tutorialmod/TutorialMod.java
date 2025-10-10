@@ -59,10 +59,13 @@ LOGGER .info ("hola, este mod funciona") ;
 public void onBlockBreak(net.minecraftforge.event.level.BlockEvent.BreakEvent event) {
 var jugador=event.getPlayer() ;    
 var bloque=event.getState().getBlock().getName().getString(); 
-jugador.sendSystemMessage(
+if (bloque=="Césped"){
+  jugador.sendSystemMessage(
         net.minecraft.network.chat.Component.literal("Rompiste: " +bloque)
     );
 }
+}
+
  
 
     
